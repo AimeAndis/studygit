@@ -1,0 +1,381 @@
+﻿
+<!DOCTYPE html>
+<html>
+<head>
+    <title>首页</title>
+    <link rel="stylesheet" href="../assets/css/profile.css">
+    <!--公共的css和js文件-->
+    <meta http-equiv=X-UA-Compatible content=“IE=EmulateIE10”>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta name="format-detection" content="telephone=no" />
+
+	<script src="../cdn-cgi/apps/head/8yqMwCyZ15Jbk6mUJyj4juIeASc.js"></script>
+	<script type="text/javascript" src="../assets/plugins/jquery/jquery.min.js"></script>
+	<script type="text/javascript" src="../assets/plugins/jquery/jquery-ui.min.js"></script>
+	<script type="text/javascript" src="../assets/plugins/jquery/jquery.multiselect.js"></script>
+	<script type="text/javascript" src="../assets/plugins/bootstrap/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="../assets/combine-js-bottom.js"></script>
+	<script type="text/javascript" src="../assets/js/jquery.pagination.min.js"></script>
+	<script type="text/javascript" src="../assets/laydate/laydate.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="../css/index.css">
+	<link rel="stylesheet" type="text/css" href="../css/header.css" />
+	<link rel="stylesheet" type="text/css" href="../css/container.css" />
+	<link rel="stylesheet" type="text/css" href="../css/more.css" />
+	<link rel="stylesheet" href="../css/transaction.css" />
+	<link rel="stylesheet" type="text/css" href="../css/jquery.pagination.css" />
+	<link rel="stylesheet" type="text/css" href="../assets/css/jquery-ui.min.css" />
+	<link rel="stylesheet" href="../assets/plugins/bootstrap/css/bootstrap.min.css" />
+	<link rel="stylesheet" href="../assets/css/style-mod.css"/>
+	<link rel="stylesheet" href="../assets/custom-head-foot-scroll-blue.css"/>
+	<link rel="stylesheet" href="../assets/plugins/line-icons/line-icons.css"/>
+	<link rel="stylesheet" href="../assets/plugins/font-awesome/css/font-awesome.min.css"/>
+	<link rel="shortcut icon" href="../images/favicon.ico" />
+    
+	
+    <script src="../cdn-cgi/apps/head/XCcIJUja65t7SLXcpK7gLzF5XFY.js"></script>
+    <script type="text/javascript" src="../echarts/js/echarts.min.js"></script>
+</head>
+<body>
+<div class="wrapper"> 
+	<div class="header">
+    <div class="collapse navbar-collapse mega-menu navbar-responsive-collapse">
+        <div class="container">
+            <div class="nav-left">
+                    <img src="../images/webank/logos.png" alt="" width="80%;">
+            </div>
+            <ul class="nav navbar-nav">
+                <li id="LI_default"><a href="../home/home.page">首页</a></li>
+                <li id="LI_configure" class="dropdown">
+                    <a href="#" class data-toggle="dropdown">配置</a>
+                    <ul class="dropdown-menu">
+                        <li id="LI17"><a href="../nodeConfig/nodeConfig.page">节点配置</a></li>
+                    </ul>
+                </li>
+                <li id="LI_blockchain" class="dropdown">
+                    <a href="#" class data-toggle="dropdown">区块链信息</a>
+                    <ul class="dropdown-menu">
+                        <li id="LI11"><a href="../block/block.page">查看区块</a></li>
+                        <li id="LI12"><a href="../transaction/transaction.page">查看交易</a></li>
+                        <li id="LI16"><a href="../pendingTransaction/pendingTransaction.page">正在处理的交易</a></li>
+
+                        <li id="LI13"><a href="../singleStatistics/singleStatistics.page">统计指标</a></li>
+                        <!-- <li id="LI14"><a href="../transactionStatistics/transactionStatistics.page">交易流</a></li>
+                        <li id="LI15"><a href="../blockStatistics/blockStatistics.page">共识流</a></li> -->
+                    </ul>
+                </li>
+                <li id="LI_login" class="hidden-lg hidden-md ">
+                    <a href="/login" title="Login Now">&nbsp;Login</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+   
+   
+   
+    <div class="container-wrap">
+        <div class="profile container " style="margin-top: 0px">
+            <div class="row">
+                <div>
+                    <div class="profile-body">
+                        <div align="left" id="divadvert" style="margin-bottom: 11px; margin-top: -10px;">
+                            <span id="ContentPlaceHolder1_litIBannerAdd"></span>
+                        </div>
+                        <div id="ContentPlaceHolder1_mainboxes" class="row margin-bottom-10">
+                            <div class="col-sm-6 sm-margin-bottom-20" >
+                                <div class="service-block-v3 service-block-blue">
+                                    <div class="clearfix margin-bottom-5 "></div>
+                                    <div class="row margin-bottom-20 " id="bWrap">
+                                       
+                                        <div class="col-xs-6 text-left service-in">
+                                            <small>
+                                                <a href="../block/block.page" rel="tooltip" data-placement="right">
+                                                    <font color="white">当前块高</font>
+                                                </a>
+                                            </small>
+                                            <h4 style="color: #000">
+                                                <span id="ContentPlaceHolder1_Label1" class="counter" style="font-size:16px;">
+                                                    <a href="../block/block.page" rel="tooltip" data-placement="bottom">
+                                                        <font color="white" id="LastBlockNumber"></font>
+                                                    </a>
+                                                </span>
+                                            </h4>
+                                        </div>
+                                    
+                                        <div class="col-xs-6 text-right service-in">
+                                            <small>
+                                                <a href="../transaction/transaction.page" rel="tooltip" data-placement="left">
+                                                    <font color="white">交易总量</font>
+                                                </a>
+                                            </small>
+                                            <h4 class="counter">
+                                                <a href="../transaction/transaction.page" rel="tooltip" data-placement="left">
+                                                    <font color="white" id="TransactionsNumber"></font>
+                                                </a>
+                                            </h4>
+                                        </div>
+                                       
+                                        <div class="col-xs-6 text-left service-in">
+                                        <small>
+                                            <a href="../pendingTransaction/pendingTransaction.page" rel="tooltip" data-placement="left">
+                                                <font color="white">正在处理交易数</font>
+                                            </a>
+                                        </small>
+                                        <h4 class="counter">
+                                            <a href="../pendingTransaction/pendingTransaction.page" rel="tooltip" data-placement="bottom">
+                                                <font color="white" id="pendingTxnNumber"></font>
+                                            </a>
+                                        </h4>
+                                    </div>
+                                   
+                                    <div class="col-xs-6 text-right service-in">
+                                        <small>
+                                            <p rel="tooltip" data-placement="left">
+                                                <font color="white">PBFT 当前视图</font>
+                                            </p>
+                                        </small>
+                                        <h4 class="counter">
+                                            <p rel="tooltip" data-placement="bottom">
+                                                <font color="white" id="pbftViewNumber"></font>
+                                            </p>
+                                        </h4>
+                                    </div>
+
+                                    </div>
+
+                                  
+
+                                </div>
+                            </div>
+
+                            <div class="col-sm-6">
+                                <div class="tag-box tag-box-v2 box-shadow shadow-effect-1" style="border-right-color: #3498db; border-right-style: solid; border-right-width: 2px; margin-bottom: 0px; background-color: #FFFFFF;">
+                                    <div id="containerchart" style="min-width: 255px; height: 183px; margin: 0 auto">
+                                    </div>
+                                </div>
+                            </div>
+
+
+                        </div>
+
+                        <div class="table-responsive">
+                            <div class="blockarea"></div>
+                        </div>
+
+                        <div class="row margin-bottom-20">
+                            <!--左边第一个折线图-->
+                            <div class="col-sm-6">
+                                <div class="tag-box tag-box-v2 box-shadow shadow-effect-1">
+                                    <div id="db_set_cnt">
+                                    </div>
+                                </div>
+                            </div>
+                            <!--左边第二个折线图-->
+                            <div class="col-sm-6">
+                                <div class="tag-box tag-box-v2 box-shadow shadow-effect-1">
+                                    <div id="db_get_cnt">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row margin-bottom-20">
+                            <!--右边第一个折线图-->
+                            <div class="col-sm-6">
+                                <div class="tag-box tag-box-v2 box-shadow shadow-effect-1">
+                                    <div id="tx_exec_avg">
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                            <!--右边第二个折线图-->
+                            <div class="col-sm-6">
+                                <div class="tag-box tag-box-v2 box-shadow shadow-effect-1">
+                                    <div id="tx_trace_avg">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <br>
+                    </div>
+                        <br /><br />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</div>
+</body>
+<script type="text/javascript" charset="utf-8" src="../js/home.js"></script>
+<script>
+    // 1.
+        var myChart1 = echarts.init(document.getElementById('db_set_cnt'));
+
+        // 指定图表的配置项和数据
+        option = {
+            title:{
+                text:'数据写入次数',
+                padding:25,
+                top:-10,
+                textStyle:{
+                fontSize:18,
+                align:'left'
+                }
+            },
+            tooltip: {
+                trigger: 'axis'
+            },
+            xAxis: {
+                type: '',
+                data: ['2：01', '2：02', '2：03']
+            },
+            yAxis: {
+                type: 'value',
+                min:'0',
+                max:'dataMax'
+            },
+            series: [{
+                name:'写入次数',
+                type:'line',
+                data: [2, 2, 2]
+            }]
+        };
+
+        // 使用刚指定的配置项和数据显示图表。
+        myChart1.setOption(option);
+
+        //2.
+        var myChart2= echarts.init(document.getElementById('db_get_cnt'));
+        option = {
+            title:{
+                text:'数据读取总量',
+                padding:25,
+                top:-10,
+                textStyle:{
+                fontSize:18,
+                align:'left'
+                }
+            },
+            tooltip: {
+                trigger: 'axis'
+            },
+            xAxis: {
+                type: '',
+                data: ['1：56', '1：57', '1：58','1：59','2：00','2：01','2：02','2：03',]
+            },
+            yAxis: {
+                type: 'value',
+                min:'0',
+                max:'dataMax'
+            },
+            series: [{
+                name:'读取总量',
+                type:'line',
+                data: [300, 300,330,320,310,350,600,700]
+            }]
+        };
+        myChart2.setOption(option);
+
+        //3.
+        var myChart3= echarts.init(document.getElementById('tx_exec_avg'));
+        option = {
+            title:{
+                text:'请求执行耗时（毫秒）平均',
+                padding:25,
+                top:-10,
+                textStyle:{
+                fontSize:18,
+                align:'left'
+                }
+            },
+            tooltip: {
+                trigger: 'axis'
+            },
+            xAxis: {
+                type: '',
+                data: ['1：57', '1：58','2：01','2：02','2：03',]
+            },
+            yAxis: {
+                type: 'value',
+                min:'0',
+                max:'1.2'
+            },
+            series: [{
+                name:'耗时',
+                type:'line',
+                data: [1, 1, 0.85,0.8,0.7]
+            }]
+        };
+        myChart3.setOption(option);
+
+
+        //4.
+        var myChart4= echarts.init(document.getElementById('tx_trace_avg'));
+        option = {
+            title:{
+                text:'数据链上耗时（毫秒）平均',
+                padding:25,
+                top:-10,
+                textStyle:{
+                fontSize:18,
+                align:'left'
+                }
+            },
+            tooltip: {
+                trigger: 'axis'
+            },
+            xAxis: {
+                type: '',
+                data: ['2：00','2：01','2：02']
+            },
+            yAxis: {
+                type: 'value',
+                min:'0',
+                max:'2100'
+            },
+            series: [{
+                name:'耗时',
+                type:'line',
+                data: [600, 580,1820]
+            }]
+        };
+
+        myChart4.setOption(option);
+
+
+        //最顶部折线图
+        var myChartTop= echarts.init(document.getElementById('containerchart'));
+        option = {
+            title:{
+                text:'最近有交易的0天交易量',
+                left:'center',
+                textAlign:'left',
+                textStyle:{
+                 fontSize:15,
+                 color:'#322'
+                }
+            },
+            tooltip: {
+                trigger: 'none'
+            },
+            xAxis: {
+                type: '',
+                data: []
+            },
+            yAxis: {
+            show:false
+            },
+            series: [{
+                name:'交易量',
+                type:'line',
+                data: []
+            }]
+        };
+        myChartTop.setOption(option);
+
+</script>
+</html>

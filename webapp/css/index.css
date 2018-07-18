@@ -1,0 +1,33 @@
+div .table-responsive{
+   padding : 0 15px;
+   height  :  400px;
+   margin  :  15px 0; 
+}
+
+.table-responsive .blockarea{
+    position    : relative; 
+    background  :#FFFFFF;
+    overflow    : hidden; 
+    width       : 1190px; 
+    height      : 400px; 
+    padding     : 0px; 
+    margin      : 0px; 
+    border-width: 0px; 
+    cursor      : default;
+}
+
+.row .col-sm-6 .tag-box{
+    border-color: #FFF; 
+    border-right-style: solid; 
+    border-right-width: 2px; 
+    margin-bottom: 0px; 
+    background-color: #FFFFFF;
+}
+
+#db_set_cnt, #db_get_cnt, #tx_exec_avg, #tx_trace_avg{
+    min-width: 255px; 
+    height: 183px; 
+    margin: 0 auto;
+}
+
+

@@ -1,0 +1,408 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>统计指标</title>
+
+    <meta http-equiv=X-UA-Compatible content=“IE=EmulateIE10”>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="format-detection" content="telephone=no" />
+
+
+    <script src="../cdn-cgi/apps/head/8yqMwCyZ15Jbk6mUJyj4juIeASc.js"></script>
+    <script type="text/javascript" src="../assets/plugins/jquery/jquery.min.js"></script>
+    <script type="text/javascript" src="../assets/plugins/jquery/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="../assets/plugins/jquery/jquery.multiselect.js"></script>
+    <script type="text/javascript" src="../assets/plugins/bootstrap/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../assets/combine-js-bottom.js"></script>
+    <script type="text/javascript" src="../assets/js/jquery.pagination.min.js"></script>
+    <script type="text/javascript" src="../assets/laydate/laydate.js"></script>
+
+
+    <link rel="stylesheet" type="text/css" href="../css/header.css" />
+    <link rel="stylesheet" type="text/css" href="../css/container.css" />
+    <link rel="stylesheet" type="text/css" href="../css/more.css" />
+    <link rel="stylesheet" href="../css/transaction.css" />
+    <link rel="stylesheet" type="text/css" href="../css/jquery.pagination.css" />
+    <link rel="stylesheet" type="text/css" href="../assets/css/jquery-ui.min.css" />
+    <link rel="stylesheet" href="../assets/plugins/bootstrap/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="../assets/css/style-mod.css"/>
+    <link rel="stylesheet" href="../assets/custom-head-foot-scroll-blue.css"/>
+    <link rel="stylesheet" href="../assets/plugins/line-icons/line-icons.css"/>
+    <link rel="stylesheet" href="../assets/plugins/font-awesome/css/font-awesome.min.css"/>
+    <link rel="shortcut icon" href="../images/favicon.ico" />
+    <link rel="stylesheet" href="../assets/css/jquery.multiselect.css">
+    <script type="text/javascript" src="../echarts/js/echarts.min.js"></script>
+    <script type="text/javascript" src="../assets/js/dateUtils.js"></script>
+    <link rel="stylesheet" href="../css/singleStatistics.css">
+
+</head>
+<body>
+
+<!--<%--echart--%>-->
+<div class="wrapper">
+    <div class="header">
+
+            <div class="collapse navbar-collapse mega-menu navbar-responsive-collapse">
+                <div class="container">
+                    <div class="nav-left">
+                            <img src="../images/webank/logos.png" alt="" width="80%;">
+                    </div>
+                    <ul class="nav navbar-nav">
+                        <li id="LI_default"><a href="../home/home.page">首页</a></li>
+                        <li id="LI_configure" class="dropdown">
+                            <a href="#" class data-toggle="dropdown">配置</a>
+                            <ul class="dropdown-menu">
+                                <li id="LI17"><a href="../nodeConfig/nodeConfig.page">节点配置</a></li>
+                            </ul>
+                        </li>
+                        <li id="LI_blockchain" class="dropdown">
+                            <a href="#" class data-toggle="dropdown">区块链信息</a>
+                            <ul class="dropdown-menu">
+                                <li id="LI11"><a href="../block/block.page">查看区块</a></li>
+                                <li id="LI12"><a href="../transaction/transaction.page">查看交易</a></li>
+                                <li id="LI16"><a href="../pendingTransaction/pendingTransaction.page">正在处理的交易</a></li>
+
+                                <li id="LI13"><a href="../singleStatistics/singleStatistics.page">统计指标</a></li>
+                                <!-- <li id="LI14"><a href="../transactionStatistics/transactionStatistics.page">交易流</a></li>
+                                <li id="LI15"><a href="../blockStatistics/blockStatistics.page">共识流</a></li> -->
+                            </ul>
+                        </li>
+                        <li id="LI_login" class="hidden-lg hidden-md ">
+                            <a href="/login" title="Login Now">&nbsp;Login</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    <div class="breadcrumbs">
+        <div class="container">
+            <h1 class="pull-left">统计指标 <span class="lead-modify" style="color: #999999">&nbsp;</span><br />
+            </h1>
+            <ul class="pull-right breadcrumb">
+                <li><a href="../">首页</a></li>
+                <li class="active">统计指标</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="profile container " style="margin-top: 5px">
+        <div class="row">
+            <form class="form-horizontal" role="form">
+                <div class="form-group">
+                    <label class="col-xs-1 control-label">日期</label>
+                    <div class="col-xs-11">
+                        <input type="text" id="selectDate"/>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-1 control-label">时间</label>
+                    <div class="col-sm-11">
+                        <input type="text" id="selectTime1"/><span style="font-size: 14px;"> 至：</span>
+                        <input type="text" id="selectTime2"/>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-1 control-label">区块链节点</label>
+                    <div class="col-sm-11">
+                        <select id='objSelect' multiple="multiple">
+
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-1 control-label">选择指标</label>
+                    <div class="col-sm-11">
+                        <input type="button" value="全选" onclick="checkAllAttr()">
+                        <input type="button" value="取消" onclick="cancelAllCheck()">
+                        <br/>
+                        <div id="attrView" style="overflow-y: scroll"> </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-1 control-label">
+                        <button type="button" class="btn btn-info btn-sm" onclick="queryStstList()">查询</button>
+                    </label>
+                </div>
+            </form>
+        </div>
+    </div>
+
+
+
+
+    <!--<%--
+        <div class="container left " id="divmobilesearch" >
+            <div style="margin-bottom: 10px;">
+                <ul style="margin-bottom: 10px;">
+                <span style="font-size: 14px;">日期:</span> <input type="text" id="selectDate"/>
+                </ul>
+                <ul style="margin-bottom: 10px;">
+                    <span style="font-size: 14px;">时间:</span> <input type="text" id="selectTime1"/>至</span> <input type="text" id="selectTime2"/>
+                </ul>
+            </div>
+           &lt;%&ndash;对象下拉列表&ndash;%&gt;
+            <div id="objDiv" style="margin-bottom: 10px;">
+                <span style="font-size: 14px;height: 30px;">选择区块链节点:</span>
+                <select id='objSelect' multiple="multiple">
+                </select>
+            </div>
+             &lt;%&ndash;属性下拉列表&ndash;%&gt;
+               <span style="font-size: 14px;">选择指标:</span>
+               <input type="button" value="全选" onclick="checkAllAttr()">
+               <input type="button" value="取消" onclick="cancelAllCheck()">
+               <br/>
+            <div id="attrView" style="overflow-y: scroll">
+            </div>
+           <input type="button" onclick="queryStstList()" value="查询"/>
+        </div>
+    --%>-->
+
+
+
+    <div class="profile container " style="margin-top: 0px">
+        <div class="profile-body" id="allEchartContainer">
+            <div class="col-sm-6">
+                     <div class="tag-box tag-box-v2 box-shadow shadow-effect-1" style="border-right-color: #3498db; border-right-style: solid; border-right-width: 2px; margin-bottom: 0px; background-color: #FFFFFF;">
+                           <div id="containerchart1" style="min-width: 255px; height: 183px; margin: 0 auto">
+                           </div>
+                    </div>
+            </div>
+            <div class="col-sm-6">
+                     <div class="tag-box tag-box-v2 box-shadow shadow-effect-1" style="border-right-color: #3498db; border-right-style: solid; border-right-width: 2px; margin-bottom: 0px; background-color: #FFFFFF;">
+                           <div id="containerchart2" style="min-width: 255px; height: 183px; margin: 0 auto">
+                           </div>
+                    </div>
+            </div>
+            <div class="col-sm-6">
+                     <div class="tag-box tag-box-v2 box-shadow shadow-effect-1" style="border-right-color: #3498db; border-right-style: solid; border-right-width: 2px; margin-bottom: 0px; background-color: #FFFFFF;">
+                           <div id="containerchart3" style="min-width: 255px; height: 183px; margin: 0 auto">
+                           </div>
+                    </div>
+            </div>
+            <div class="col-sm-6">
+                     <div class="tag-box tag-box-v2 box-shadow shadow-effect-1" style="border-right-color: #3498db; border-right-style: solid; border-right-width: 2px; margin-bottom: 0px; background-color: #FFFFFF;">
+                           <div id="containerchart4" style="min-width: 255px; height: 183px; margin: 0 auto">
+                           </div>
+                    </div>
+            </div>
+            <div class="col-sm-6">
+                     <div class="tag-box tag-box-v2 box-shadow shadow-effect-1" style="border-right-color: #3498db; border-right-style: solid; border-right-width: 2px; margin-bottom: 0px; background-color: #FFFFFF;">
+                           <div id="containerchart5" style="min-width: 255px; height: 183px; margin: 0 auto">
+                           </div>
+                    </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+<script type="text/javascript" charset="utf-8" src="../js/singleStatistics.js"></script>
+<script>
+    //1.
+    var myChartNode1= echarts.init(document.getElementById('containerchart1'));
+    option = {
+            title:{
+                text:'10.6.9.222.node1区块高度',
+                padding:25,
+                top:-10,
+                textStyle:{
+                fontSize:18,
+                align:'left'
+                }
+            },
+            tooltip: {
+                trigger: 'axis'
+            },
+            xAxis: {
+                type: '',
+                data: ['11：56', '11：57', '11：58','11：59','12：00','12：01','12：02','12：03','12：04','12：05']
+            },
+            yAxis: {
+                type: 'value',
+                min:'0',
+                max:'1800'
+            },
+            series: [{
+                name:'读取总量',
+                type:'line',
+                itemStyle : {
+								normal : {
+								    color:'#87CEEB',
+									lineStyle:{
+										color:'#FF8C00'
+									}
+								}
+							},
+                data: [50, 59, 88, 120, 610, 750, 1300, 1600,1680,1690]
+            }]
+        };
+        myChartNode1.setOption(option);
+
+
+        //1.
+    var myChartNode2= echarts.init(document.getElementById('containerchart2'));
+    option = {
+            title:{
+                text:'10.6.9.222.node2区块高度',
+                padding:25,
+                top:-10,
+                textStyle:{
+                fontSize:18,
+                align:'left'
+                }
+            },
+            tooltip: {
+                trigger: 'axis'
+            },
+            xAxis: {
+                type: '',
+                data: ['11：56', '11：57', '11：58','11：59','12：00','12：01','12：02','12：03','12：04','12：05']
+            },
+            yAxis: {
+                type: 'value',
+                min:'0',
+                max:'1800'
+            },
+            series: [{
+                name:'读取总量',
+                type:'line',
+                itemStyle : {
+								normal : {
+								    color:'#87CEEB',
+									lineStyle:{
+										color:'#FF8C00'
+									}
+								}
+							},
+                data: [50, 59, 88, 120, 610, 750, 1300, 1600,1680,1690]
+            }]
+        };
+        myChartNode2.setOption(option);
+        
+
+        //3.
+    var myChartNode3= echarts.init(document.getElementById('containerchart3'));
+    option = {
+            title:{
+                text:'10.6.9.222.node3区块高度',
+                padding:25,
+                top:-10,
+                textStyle:{
+                fontSize:18,
+                align:'left'
+                }
+            },
+            tooltip: {
+                trigger: 'axis'
+            },
+            xAxis: {
+                type: '',
+                data: ['11：56', '11：57', '11：58','11：59','12：00','12：01','12：02','12：03','12：04','12：05']
+            },
+            yAxis: {
+                type: 'value',
+                min:'0',
+                max:'1800'
+            },
+            series: [{
+                name:'读取总量',
+                type:'line',
+                itemStyle : {
+								normal : {
+								    color:'#87CEEB',
+									lineStyle:{
+										color:'#FF8C00'
+									}
+								}
+							},
+                data: [50, 59, 88, 120, 610, 750, 1300, 1600,1680,1690]
+            }]
+        };
+        myChartNode3.setOption(option);
+        
+
+        //4.
+    var myChartNode4= echarts.init(document.getElementById('containerchart4'));
+    option = {
+            title:{
+                text:'10.6.9.222.node4区块高度',
+                padding:25,
+                top:-10,
+                textStyle:{
+                fontSize:18,
+                align:'left'
+                }
+            },
+            tooltip: {
+                trigger: 'axis'
+            },
+            xAxis: {
+                type: '',
+                data: ['11：56', '11：57', '11：58','11：59','12：00','12：01','12：02','12：03','12：04','12：05']
+            },
+            yAxis: {
+                type: 'value',
+                min:'0',
+                max:'1800'
+            },
+            series: [{
+                name:'读取总量',
+                type:'line',
+                itemStyle : {
+								normal : {
+								    color:'#87CEEB',
+									lineStyle:{
+										color:'#FF8C00'
+									}
+								}
+							},
+                data: [50, 59, 88, 120, 610, 750, 1300, 1600,1680,1690]
+            }]
+        };
+        myChartNode4.setOption(option);
+        
+
+        //5.
+    var myChartNode5= echarts.init(document.getElementById('containerchart5'));
+    option = {
+            title:{
+                text:'10.6.9.222.node5区块高度',
+                padding:25,
+                top:-10,
+                textStyle:{
+                fontSize:18,
+                align:'left'
+                }
+            },
+            tooltip: {
+                trigger: 'axis'
+            },
+            xAxis: {
+                type: '',
+                data: ['11：56', '11：57', '11：58','11：59','12：00','12：01','12：02','12：03','12：04','12：05']
+            },
+            yAxis: {
+                type: 'value',
+                min:'0',
+                max:'1800'
+            },
+            series: [{
+                name:'读取总量',
+                type:'line',
+                itemStyle : {
+								normal : {
+								    color:'#87CEEB',
+									lineStyle:{
+										color:'#FF8C00'
+									}
+								}
+							},
+                data: [50, 59, 88, 120, 610, 750, 1300, 1600,1680,1690]
+            }]
+        };
+        myChartNode5.setOption(option);
+        
+</script>
+</html>
